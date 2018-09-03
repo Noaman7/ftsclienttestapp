@@ -1,0 +1,184 @@
+
+<div class="col-md-12 col-xs-3">
+    <form #form="ngForm" class="simple-form">
+            <div class="col-sm-12 col-xs-12">
+                <div class="row table-responsive">
+                    <p *ngIf="!versionList"><em>Loading...</em></p>
+                    <div>
+                        <table class='table table-striped ' *ngIf="versionList">
+                           <thead class="thead-light">
+                                <tr>
+                                   <th> </th>
+                                    <!--<th><input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"/> </th>-->
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <th>Version</th>
+                                    <th>FTS_ID</th>
+                                    <th>ChangedBy</th>
+                                    <th>Comment</th>
+                                    <th>Date Time</th>
+                                    <th>Device Type</th>
+                                    <th>Release</th>
+
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let detail of versionList">
+                                    <td>
+
+                                            <label class="lblcontainer">
+                                                    <input type="checkbox" (click)=checkFirst(detail) name="checbx" required>
+                                                    <span class="checkmark"></span>
+                                                  </label>
+                                       
+                                                </td>
+                                  
+                                    <td><a (click)="download(detail.content,detail.version,detail.name)">{{ detail.name }}</a></td>
+                                    <td>{{ detail.status }}</td>
+                                    <td>{{ detail.version }}</td>
+                                    <td>{{ detail.ftS_ID }}</td>
+                                    <td>{{ detail.changedBy }}</td>
+                                    <td>{{ detail.comment }}</td>
+                                    <td>{{ detail.dateTime| date:'short'}}</td>
+                                    <td>{{ detail.deviceType}}</td>
+                                    <td>{{ detail.release}}</td>
+                                    
+                                </tr>
+                             
+                            </tbody>
+                           
+                              
+                        </table>
+                       
+                    <hr class="down-bar">
+                       
+                       
+                    </div>
+                      
+           
+        
+        <p class="top-left"><sup>*</sup> Note: Select one file to approve.</p>
+         <h5>&nbsp;</h5>
+        </div>
+                </div>
+              
+         
+                        
+    
+    </form>
+<div class="form-group"> </div> 
+
+     <div class="d-flex justify-content-center align-items-center col-md-12 col-xs-12">
+              <div class="row">
+                            &nbsp;
+                            <button type="button"  class="btnReject btn btn-primary " [disabled]="!disable" data-toggle="modal" data-target="#approvedialogModal">
+                            
+                              Approve
+                            </button>
+     
+                            <div class="btnmodal"></div>
+                          <button type="button"  class="btnReject btn btn-primary" [disabled]="!disableReject"  data-toggle="modal" data-target="#rejectdialogModal">
+                                  Reject 
+                            </button>
+                   </div>
+     </div>           
+     
+
+ <h5>&nbsp;</h5>
+    <!--Approve Model Dialog Box-->
+
+    <div class="modal fade" id="approvedialogModal" tabindex="-1" role="dialog" aria-labelledby="dialogModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header custom-title">
+                        <h3 class="modal-title custom-title" id="dialogModalLabel">Alert</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body custom-body">
+                        <h4 class="custom-body"> Do you want to approve selected version?</h4>
+                        
+                    </div>
+    
+                    <div class="d-flex justify-content-center custom-modal align-items-center container">
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                        <button type="button"  class="btn btn-primary btn-block col-sm-4"  data-dismiss="modal">No</button>
+    
+                        <div class="btnmodal"></div>
+                        
+                        
+                        <button type="button"  class="btn btn-primary btn-block col-sm-4"  (click)="approveVersion()"  data-dismiss="modal">Yes</button>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+
+
+    <!-- <div class="modal fade" id="approvedialogModal" tabindex="-1" role="dialog" aria-labelledby="dialogModalLabel" aria-hidden="true">
+        <div class="modal-dialog custom-title" role="document">
+            <div class="modal-content">
+                <div class="modal-header custom-title">
+                    <h3 class="modal-title custom-title" id="dialogModalLabel">Alert</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4>Do you want to approve Version {{sVersion}} ?</h4>
+                    <h5 style="color:dodgerblue"> Changes in other files will get rejected.</h5>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary" (click)="approveVersion()" data-dismiss="modal">Yes</button>
+                </div>
+
+            </div>
+        </div>
+    </div> -->
+
+      <!--Reject Model Dialog Box-->
+    <div class="modal fade" id="rejectdialogModal" tabindex="-1" role="dialog" aria-labelledby="dialogModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header custom-title">
+                    <h3 class="modal-title custom-title" id="dialogModalLabel">Alert</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body custom-body">
+                    <h4 class="custom-body"><img src="assets/Images/icon_alert.png"> Do you want to reject selected version(s)?</h4>
+                    
+                </div>
+
+                <div class="d-flex justify-content-center custom-modal align-items-center container">
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                    <button type="button"  class="btn btn-primary btn-block col-sm-4"  data-dismiss="modal">No</button>
+
+                    <div class="btnmodal"></div>
+                    
+                    
+                    <button type="button"  class="btn btn-primary btn-block col-sm-4"  (click)="rejectAllVersion()"  data-dismiss="modal">Yes</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,70 @@
+.simple-form {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    margin-top: 50px;
+    margin-bottom:15px;
+    margin-left: 180px;
+    background-color: white;
+    vertical-align: middle;
+    width: 850px
+
+ 
+}
+.nav-bar{
+    background-color:#A8A8A8; 
+    height:7px
+}
+.nav-baractive{
+    background-color:#585858; 
+    height:7px
+}
+.logouttext{
+    margin-top: -90px;
+   
+}
+.userName{
+    margin-left: 250px;
+    float: left
+}
+
+.logoutbtn{
+margin-top: -15px;
+margin-left: -53px;
+content: url('/assets/Images/icon_logout.png');
+}
+
+.table > thead >tr> th {
+    color: white;
+    background-color:	#989898
+ }
+ .btnSubmit{
+   
+    margin-left: 350px;
+    width: 250px;
+}
+
+.btnReject{
+  
+   
+    width: 250px;
+}
+
+a{
+   cursor: pointer;
+   /*text-decoration: underline;
+   border-bottom: 0.01px solid #007bff;*/
+}
+a:hover {
+   color:  #007bff!important;
+}
+
+.row {
+    margin-left: 21px;
+}
+
+sup {
+    color: red;
+    font-weight: 300;
+}

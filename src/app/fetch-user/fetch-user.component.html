@@ -1,0 +1,41 @@
+
+      <form #form="ngForm" class="add-form">
+
+            <div class="col-sm-12 col-xs-3">
+                <div class="row table-responsive">
+                    <p *ngIf="!userdetails"><em>Loading...</em></p>
+                    <div>
+                        <table class='table table-striped' *ngIf="userdetails">
+                           <thead class="thead-light">
+                                <tr>
+                                  
+                                <th>Name</th>
+                                <th>LoginID</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                            </tr>
+
+                               
+
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let userdetail of userdetails">
+                                <td>{{ userdetail.name }}</td>
+                                <td>{{ userdetail.loginID }}</td>
+                                <td>{{ userdetail.role }}</td>
+                                <td>{{ userdetail.status }}</td>
+                            </tr>
+                            </tbody>
+                             
+                              
+                        </table>
+                        <hr class="down-bar">
+                       
+                       
+                    </div>
+         <h5>&nbsp;</h5>
+        </div>
+  </div>
+      
+    </form>
+
